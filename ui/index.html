@@ -1,0 +1,362 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="cyan">
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-mark">N</div>
+            <div>
+                <div class="brand-name">NEXUS</div>
+                <div class="brand-subtitle">SYSTEM CONTROL CENTER</div>
+            </div>
+        </div>
+
+        <div class="nav-label">PRINCIPAL</div>
+
+        <nav class="navigation">
+            <button class="nav-item active" data-page="dashboard">
+                <span class="nav-icon">⌂</span> Painel
+            </button>
+            <button class="nav-item" data-page="diagnostics">
+                <span class="nav-icon">⌘</span> Diagnóstico
+            </button>
+        </nav>
+
+        <div class="nav-label secondary-label">MÓDULOS</div>
+
+        <nav class="navigation">
+            <button class="nav-item" data-page="spotify">
+                <span class="nav-icon">♫</span> Spotify
+                <span class="nav-tag">BETA</span>
+            </button>
+        </nav>
+
+        <div class="nav-label secondary-label">SISTEMA</div>
+
+        <nav class="navigation">
+            <button class="nav-item" data-page="settings">
+                <span class="nav-icon">⚙</span> Configurações
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="connection-indicator">
+                <span class="status-dot"></span>
+                Núcleo conectado
+            </div>
+            <div class="version-label">NEXUS <span id="app-version">1.0.0</span></div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <div class="breadcrumb">
+                    NEXUS <span>/</span> <b id="current-section">Painel</b>
+                </div>
+                <div class="page-heading" id="page-heading">Centro de controle</div>
+            </div>
+
+            <div class="top-actions">
+                <div class="system-chip">
+                    <span class="status-dot"></span>
+                    SISTEMA ATIVO
+                </div>
+                <button class="icon-button" id="refresh-button" title="Atualizar diagnóstico">↻</button>
+            </div>
+        </header>
+
+        <!-- PAINEL PRINCIPAL -->
+        <section class="page active" id="page-dashboard">
+
+            <div class="welcome-row">
+                <div>
+                    <div class="eyebrow">CENTRAL DE OPERAÇÕES</div>
+                    <h1>Bem-vindo ao <span>NEXUS</span></h1>
+                    <p>Seu centro de controle está pronto.</p>
+                </div>
+                <div class="live-clock" id="clock">00:00:00</div>
+            </div>
+
+            <div class="dashboard-grid">
+
+                <section class="panel core-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <div class="eyebrow">NÚCLEO PRINCIPAL</div>
+                            <h2>Central de processamento</h2>
+                        </div>
+                        <div class="live-label">
+                            <span class="status-dot"></span> ONLINE
+                        </div>
+                    </div>
+
+                    <div class="core-visual">
+                        <div class="core-glow"></div>
+                        <div class="orbit orbit-one"></div>
+                        <div class="orbit orbit-two"></div>
+                        <div class="orbit orbit-three"></div>
+                        <div class="core-center">N</div>
+                    </div>
+
+                    <div class="core-footer">
+                        <span>NEXUS CORE</span>
+                        <span>VERSÃO 1.0.0</span>
+                        <span>ESTÁVEL</span>
+                    </div>
+                </section>
+
+                <div class="right-column">
+
+                    <section class="panel status-panel">
+                        <div class="eyebrow">STATUS DO SISTEMA</div>
+
+                        <div class="status-main">
+                            <div class="status-icon">✓</div>
+                            <div>
+                                <h2>Núcleo iniciado</h2>
+                                <p>Interface conectada ao Python.</p>
+                            </div>
+                        </div>
+
+                        <div class="status-divider"></div>
+
+                        <div class="status-detail">
+                            <span>Aplicativo</span>
+                            <strong class="cyan-text">NEXUS</strong>
+                        </div>
+                        <div class="status-detail">
+                            <span>Versão</span>
+                            <strong id="status-version">1.0.0</strong>
+                        </div>
+                        <div class="status-detail">
+                            <span>Inicialização</span>
+                            <strong>Manual</strong>
+                        </div>
+                    </section>
+
+                    <section class="panel quick-panel">
+                        <div class="eyebrow">ACESSO RÁPIDO</div>
+
+                        <button class="quick-action" data-page="diagnostics">
+                            <span>⌘</span>
+                            <div>
+                                <strong>Diagnóstico</strong>
+                                <small>Informações do computador</small>
+                            </div>
+                            <b>›</b>
+                        </button>
+
+                        <button class="quick-action" data-page="spotify">
+                            <span>♫</span>
+                            <div>
+                                <strong>Spotify</strong>
+                                <small>Acessar módulo</small>
+                            </div>
+                            <b>›</b>
+                        </button>
+                    </section>
+
+                </div>
+            </div>
+
+            <div class="section-heading">
+                <div>
+                    <div class="eyebrow">INFORMAÇÕES</div>
+                    <h2>Resumo do computador</h2>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="panel info-card">
+                    <span class="info-symbol">▣</span>
+                    <div class="info-label">SISTEMA OPERACIONAL</div>
+                    <div class="info-value" id="os-name">Carregando...</div>
+                    <div class="info-description">Sistema detectado</div>
+                </div>
+
+                <div class="panel info-card">
+                    <span class="info-symbol">◈</span>
+                    <div class="info-label">ARQUITETURA</div>
+                    <div class="info-value" id="architecture">Carregando...</div>
+                    <div class="info-description">Arquitetura do sistema</div>
+                </div>
+
+                <div class="panel info-card">
+                    <span class="info-symbol">▤</span>
+                    <div class="info-label">ESPAÇO LIVRE</div>
+                    <div class="info-value" id="disk-space">Carregando...</div>
+                    <div class="info-description">Unidade principal</div>
+                </div>
+            </div>
+
+            <div class="section-heading log-heading">
+                <div>
+                    <div class="eyebrow">MONITORAMENTO</div>
+                    <h2>Registro de atividades</h2>
+                </div>
+                <button class="text-button" id="clear-log">Limpar registro</button>
+            </div>
+
+            <section class="panel log-panel">
+                <div class="log-list" id="log-list">
+                    <div class="empty-state">Carregando atividades...</div>
+                </div>
+            </section>
+
+        </section>
+
+        <!-- DIAGNÓSTICO -->
+        <section class="page" id="page-diagnostics">
+            <div class="eyebrow">ANÁLISE DO COMPUTADOR</div>
+            <h1>Diagnóstico <span>do sistema</span></h1>
+            <p class="page-description">
+                Informações coletadas em modo somente leitura.
+            </p>
+
+            <section class="panel diagnostic-panel">
+                <div class="panel-heading">
+                    <div>
+                        <div class="eyebrow">INFORMAÇÕES DETECTADAS</div>
+                        <h2>Detalhes do computador</h2>
+                    </div>
+                    <span class="development-tag">SOMENTE LEITURA</span>
+                </div>
+
+                <div class="diagnostic-list" id="diagnostic-list">
+                    <div class="empty-state">Aguardando diagnóstico...</div>
+                </div>
+            </section>
+        </section>
+
+<!-- SPOTIFY -->
+
+<!-- SPOTIFY -->
+<section class="page" id="page-spotify">
+    <div class="eyebrow">MÓDULO INDEPENDENTE</div>
+    <h1>Módulo <span>Spotify</span></h1>
+    <p class="page-description">
+        Controle e diagnóstico da instalação do Spotify.
+    </p>
+
+    <section class="panel spotify-main-panel">
+        <div class="spotify-header">
+            <div>
+                <div class="eyebrow">INTEGRAÇÃO</div>
+                <h2>Spotify Control Center</h2>
+                <p>Gerenciamento local do Spotify e Spicetify.</p>
+            </div>
+            <div class="spotify-symbol">♫</div>
+        </div>
+
+        <div class="spotify-status-grid">
+            <div class="spotify-status-card">
+                <span>Spotify</span>
+                <strong id="spotify-installed">Verificando...</strong>
+            </div>
+            <div class="spotify-status-card">
+                <span>Execução</span>
+                <strong id="spotify-running">Verificando...</strong>
+            </div>
+            <div class="spotify-status-card">
+                <span>Spicetify</span>
+                <strong id="spotify-spicetify">Verificando...</strong>
+            </div>
+            <div class="spotify-status-card">
+                <span>Marketplace</span>
+                <strong id="spotify-marketplace">Verificando...</strong>
+            </div>
+        </div>
+
+        <div class="spotify-version">
+            <span>Versão do Spicetify</span>
+            <strong id="spotify-version">--</strong>
+        </div>
+
+        <div class="spotify-actions">
+            <button class="primary-button" id="spotify-launch">
+                ABRIR SPOTIFY
+            </button>
+            <button class="secondary-button" id="spotify-refresh">
+                ATUALIZAR DIAGNÓSTICO
+            </button>
+        </div>
+
+        <div class="spotify-feedback" id="spotify-feedback">
+            Aguardando verificação...
+        </div>
+    </section>
+
+    <div class="eyebrow spotify-note">SEGURANÇA DO SISTEMA</div>
+    <p class="page-description">
+        O diagnóstico não modifica arquivos nem configurações.
+        Reparos e atualizações sempre dependerão da sua autorização.
+    </p>
+</section>
+
+
+<!-- CONFIGURAÇÕES -->
+        <section class="page" id="page-settings">
+            <div class="eyebrow">PERSONALIZAÇÃO</div>
+            <h1>Configurações <span>do NEXUS</span></h1>
+            <p class="page-description">
+                Personalize a aparência do centro de controle.
+            </p>
+
+            <section class="panel settings-panel">
+                <h2>Aparência</h2>
+                <p>Escolha a cor principal da interface.</p>
+
+                <div class="theme-options">
+                    <button class="theme-option cyan-option selected" data-theme="cyan">
+                        <span></span> Ciano
+                    </button>
+                    <button class="theme-option violet-option" data-theme="violet">
+                        <span></span> Violeta
+                    </button>
+                </div>
+
+                <div class="settings-divider"></div>
+
+                <div class="settings-row">
+                    <div>
+                        <strong>Versão do aplicativo</strong>
+                        <p>Versão atual instalada do NEXUS.</p>
+                    </div>
+                    <span class="development-tag" id="settings-version">1.0.0</span>
+                </div>
+
+                <div class="settings-divider"></div>
+
+                <div class="settings-row">
+                    <div>
+                        <strong>Atualizações automáticas</strong>
+                        <p>Desativadas. Você decide quando atualizar.</p>
+                    </div>
+                    <span class="development-tag">MANUAL</span>
+                </div>
+            </section>
+        </section>
+
+        <footer class="footer">
+            <span>NEXUS SYSTEM CONTROL CENTER</span>
+            <span>DESENVOLVIDO PARA WINDOWS</span>
+        </footer>
+
+    </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
