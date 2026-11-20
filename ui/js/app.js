@@ -109,6 +109,16 @@ function applyTheme(theme) {
     });
 }
 
+async function refreshDashboard() {
+    try {
+        const data = await window.pywebview.api.get_dashboard_data();
+        renderDashboard(data);
+    } catch (error) {
+        console.error("Erro ao carregar o painel:", error);
+        showToast("Não foi possível carregar os dados do painel.");
+    }
+}
+
 function renderDashboard(data) {
     dashboardData = data;
 
@@ -151,24 +161,6 @@ async function changeTheme(theme) {
 
     } catch (error) {
         console.error("Erro ao alterar tema:", error);
-        showToast("Erro ao salvar o tema.");
-    }
-}
-
-async function changeTheme(theme) {
-    try {
-        const result = await window.pywebview.api.set_theme(theme);
-
-        if (!result.success) {
-            showToast(result.message);
-            return;
-        }
-
-        applyTheme(theme);
-        showToast("Tema atualizado com sucesso.");
-        await refreshDashboard();
-    } catch (error) {
-        console.error(error);
         showToast("Erro ao salvar o tema.");
     }
 }
@@ -216,7 +208,7 @@ document.querySelectorAll("[data-page]").forEach((button) => {
     });
 });
 
-document.querySelectorAll("[data-theme]").forEach((button) => {
+document.querySelectorAll(".theme-option[data-theme]").forEach((button) => {
     button.addEventListener("click", () => {
         changeTheme(button.dataset.theme);
     });
